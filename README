@@ -1,0 +1,98 @@
+NAME
+    DateTime::Format::Baby - Parse and format baby-style time
+
+SYNOPSIS
+      use DateTime::Format::Baby;
+
+      my $Baby = DateTime::Format::Baby->new('en');
+      my $dt = $Baby->parse_datetime('The big hand is on the twelve and the little hand is on the six.');
+
+      $Baby->language('fr');
+
+      # La grande aiguille est sur le douze et la petite aiguille est sur le six>
+      $Baby->format_datetime($dt);
+
+DESCRIPTION
+    This module understands baby talk in a variety of languages.
+
+METHODS
+    This class offers the following methods.
+
+    * parse_datetime($string)
+        Given baby talk, this method will return a new "DateTime" object.
+
+        For some languages (en de, es, fr and it) parsing uses a regexp on
+        various synonyms for 'big' and 'little'. For all other languages,
+        the module only understands the same phrase that it would give using
+        format_datetime().
+
+        If given baby talk that it can't parse, this method may either die
+        or get confused. Don't try things like "The big and little hands are
+        on the six and five, respectively."
+
+    * format_datetime($datetime)
+        Given a "DateTime" object, this methods returns baby talk. Remember
+        though that babies only understand time (even then, without am/pm)
+
+    * language($language)
+        When given a language, this method sets its language appropriately.
+
+        This method returns the current language. (After processing as
+        above)
+
+    * languages()
+        This method return a list of known languages.
+
+SUPPORT
+        Support for this module is provided via the datetime@perl.org email
+        list. See http://lists.perl.org/ for more details.
+
+NOTE
+        Baby talk does not implement years, months, days or even AM/PM. It's
+        more for amusement than anything else.
+
+AUTHOR
+        Rick Measham <rickm-cpan@isite.net.au> (BigLug on PerlMonks)
+
+        This code is a DateTime version of Acme::Time::Baby (copyright 2002
+        by Abigail) with the ability to parse strings added by Rick Measham.
+
+CONTRIBUTIONS
+        Abigail's original module contained a language list that is
+        plagarised here. See the documentation for Acme::Time::Baby for
+        language acknowledgements.
+
+        If you have additional language data for this module, please also
+        pass it on to Abigail. This module is not meant to replace the
+        original. Rather it is a DateTime port of that module.
+
+COPYRIGHT
+        This program is copyright 2003 by Rick Measham
+
+        This program is based on code that is copyright 2002 by Abigail.
+
+        Permission is hereby granted, free of charge, to any person
+        obtaining a copy of this software and associated documentation files
+        (the "Software"), to deal in the Software without restriction,
+        including without limitation the rights to use, copy, modify, merge,
+        publish, distribute, sublicense, and/or sell copies of the Software,
+        and to permit persons to whom the Software is furnished to do so,
+        subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be
+        included in all copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+        NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+        CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+        TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+        SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+SEE ALSO
+        Acme::Time::Baby
+
+        datetime@perl.org mailing list
+
+        http://datetime.perl.org/
