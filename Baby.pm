@@ -5,7 +5,7 @@ use vars qw($VERSION);
 use DateTime;
 use Carp;
 
-$VERSION = '0.15';
+$VERSION = '0.15.1';
 
 my %languages = (
     'en'      => {numbers => [qw /one two three four five six seven
@@ -264,7 +264,7 @@ more for amusement than anything else.
 
 =head1 AUTHOR
 
-Rick Measham <rickm-cpan@isite.net.au> (BigLug on PerlMonks)
+Rick Measham <rickm@cpan.org> (BigLug on PerlMonks)
 
 This code is a DateTime version of Acme::Time::Baby (copyright 2002 by Abigail)
 with the ability to parse strings added by Rick Measham.

@@ -52,7 +52,7 @@ NOTE
         more for amusement than anything else.
 
 AUTHOR
-        Rick Measham <rickm-cpan@isite.net.au> (BigLug on PerlMonks)
+        Rick Measham <rickm@cpan.org> (BigLug on PerlMonks)
 
         This code is a DateTime version of Acme::Time::Baby (copyright 2002
         by Abigail) with the ability to parse strings added by Rick Measham.
