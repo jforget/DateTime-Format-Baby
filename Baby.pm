@@ -5,7 +5,7 @@ use vars qw($VERSION);
 use DateTime;
 use Carp;
 
-$VERSION = '0.15.1';
+$VERSION = '0.15.2';
 
 my %languages = (
     'en'      => {numbers => [qw /one two three four five six seven
