@@ -1,7 +1,11 @@
-Baby.pm
-Changes
-LICENCE
-Makefile.PL
-MANIFEST
 README
-test.pl
+Todo
+Changes
+MANIFEST
+Makefile.PL
+
+lib/DateTime/Format/Baby.pm
+
+t/00load.t
+t/01basic.t
+

@@ -1,14 +1,22 @@
-Revision history for Perl extension DateTime::Format::Baby.
+Revision history for Perl module DateTime::Format::Baby.
 
------------------------------------------------------------------------------
+Note on version conventions:
+0.0000
+|  | |
+|  | +-- Minor Decimal
+|  +---- Major Decimal
++------- Whole Number
 
-Note on version numbering:
-
-X.__.__   Major re-write (no major rewrites, thus version 0)
-_.XX.__   Bug fix release
-_.__.XX   Doc patch or install patch, if its installed and working,
-          there's no code changes so no need to update unless you want to.
-
+* Whole numbers are rewrite releases. They contain major rewrites
+  or alterations to the API. Read the docs before using them.
+* Major decimal number is patch release. Some coding has changed
+  but the API remains the same (or is extended). Upgrading to 
+  these should not change any expected behaviour, however it
+  will alter buggy behaviour. Read the docs and check if you've
+  been using work-arounds before using them.
+* Minor decimal number is a doc or installer patch only. If you have
+  the module installed and understand how it works, you don't need
+  this release.
 -----------------------------------------------------------------------------
 
 0.01  Mon Feb 24 10:08:21 2003
@@ -37,5 +45,12 @@ _.__.XX   Doc patch or install patch, if its installed and working,
           - Felt like an idiot for leaving said error there
           - Thanks to CPAN tester Jeroen for pointing it out
           - Also made sure the module uploads with UNIX linebreaks
-            
+         
+1.0100 Sat Jun 28, 2003
+	- Changed versioning to only use one decimal point. Stops poor CPAN
+	  from getting confused!
+	- Updated installation to use preferred lib/ and t/ system
+	- Fixed parser to handle new DateTime sanity checks. (We were
+	  returning 7:60 rather then 8:00, which used to work but doesn't
+	  anymore!)   
 

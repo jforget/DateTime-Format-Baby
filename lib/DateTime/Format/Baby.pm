@@ -164,7 +164,9 @@ sub parse_datetime {
 	my $minutes = $reverse{lc($bignum)} * 5;
 	
 	$hours-- if $minutes > 30;
-
+	if ($minutes == 60) {
+		$minutes = 0; $hours++;
+	}
     return DateTime->new(year=>0, hour=>$hours, minute=>$minutes);
 }
 
