@@ -5,7 +5,7 @@ use vars qw($VERSION);
 use DateTime;
 use Carp;
 
-$VERSION = '0.15.2';
+$VERSION = '0.15.3';
 
 my %languages = (
     'en'      => {numbers => [qw /one two three four five six seven
@@ -15,17 +15,17 @@ my %languages = (
                   big     => [qw/big long large minute/],
                   little     => [qw/little small short hour/]},
 
-    'br'      => {numbers => [qw /um dois três quatro cinco seis
+    'br'      => {numbers => [qw /um dois trÍs quatro cinco seis
                                      sete oito nove dez onze doze/],
-                  format  => "O ponteiro grande está no %s " .
-                             "e o ponteiro pequeno está no %s"},
+                  format  => "O ponteiro grande est· no %s " .
+                             "e o ponteiro pequeno est· no %s"},
 
-    'de'      => {numbers => [qw /Eins Zwei Drei Vier Fünf Sechs Sieben
-                                       Acht Neun Zehn Elf Zwölf/],
+    'de'      => {numbers => [qw /Eins Zwei Drei Vier F¸nf Sechs Sieben
+                                       Acht Neun Zehn Elf Zw–lf/],
                   format  => "Der gro\xDFe Zeiger ist auf der %s " .
                              "und der kleine Zeiger ist auf der %s",
-                  big     => [qw/gro§ lang gro§ Minute/],
-                  little     => [qw/wenig klein Kurzschlu§ Stunde/]},
+                  big     => [qw/groß lang groß Minute/],
+                  little     => [qw/wenig klein Kurzschluß Stunde/]},
 
     'du'      => {numbers => [qw /een twee drie vier vijf zes zeven
                                       acht negen tien elf twaalf/],
@@ -34,10 +34,10 @@ my %languages = (
 
     'es'      => {numbers => [qw /uno dos tres cuatro cinco seis siete
                                       ocho nueve diez once doce/],
-                  format  => "La manecilla grande está sobre el %s " .
-                             "y la manecilla pequeña está sobre el %s",
+                  format  => "La manecilla grande est· sobre el %s " .
+                             "y la manecilla pequeÒa est· sobre el %s",
                   big     => [qw/grande grande minuto/, 'de largo'],
-                  little     => [qw/poco peque–o cortocircuito hora/]},
+                  little     => [qw/poco pequeño cortocircuito hora/]},
                              
 
     'fr'      => {numbers => [qw /un deux trois quatre cinq six sept
@@ -57,14 +57,14 @@ my %languages = (
                   little     => [qw/piccolo piccolo short ora/]},
 
     'no'      => {numbers => [qw /en to tre fire fem seks syv
-                                     åtte ni ti elleve tolv/],
-                  format  => "Den store viseren er på %s " .
-                             "og den lille viseren er på %s"},
+                                     Âtte ni ti elleve tolv/],
+                  format  => "Den store viseren er pÂ %s " .
+                             "og den lille viseren er pÂ %s"},
 
-    'se'      => {numbers => [qw /ett två tre fyra fem sex sju
-                                      åtta nio tio elva tolv/],
-                  format  => "Den stora visaren är på %s " .
-                             "och den lilla visaren är på %s"},
+    'se'      => {numbers => [qw /ett tvÂ tre fyra fem sex sju
+                                      Âtta nio tio elva tolv/],
+                  format  => "Den stora visaren ”r pÂ %s " .
+                             "och den lilla visaren ”r pÂ %s"},
 
     'swedish chef'
               => {numbers => [qw /one tvu three ffuoor ffeefe six
