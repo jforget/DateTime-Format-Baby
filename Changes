@@ -54,3 +54,8 @@ Note on version conventions:
 	  returning 7:60 rather then 8:00, which used to work but doesn't
 	  anymore!)   
 
+1.0200 ???
+        - Prevent warnings about assignments to $[
+        - POD fix
+        - convert to utf-8
+        - fix some spelling mistakes, following Abgail's Acme::Time::Baby 2010090301.

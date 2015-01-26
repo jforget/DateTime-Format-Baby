@@ -1,11 +1,13 @@
+# -*- encoding: utf-8 -*-
 package DateTime::Format::Baby;
 
+use utf8;
 use strict;
 use vars qw($VERSION);
 use DateTime;
 use Carp;
 
-$VERSION = '0.15.3';
+$VERSION = '1.0200';
 
 my %languages = (
     'en'      => {numbers => [qw /one two three four five six seven
@@ -15,17 +17,17 @@ my %languages = (
                   big     => [qw/big long large minute/],
                   little     => [qw/little small short hour/]},
 
-    'br'      => {numbers => [qw /um dois trÍs quatro cinco seis
+    'br'      => {numbers => [qw /um dois trÃªs quatro cinco seis
                                      sete oito nove dez onze doze/],
-                  format  => "O ponteiro grande est· no %s " .
-                             "e o ponteiro pequeno est· no %s"},
+                  format  => "O ponteiro grande estÃ¡ no %s " .
+                             "e o ponteiro pequeno estÃ¡ no %s"},
 
-    'de'      => {numbers => [qw /Eins Zwei Drei Vier F¸nf Sechs Sieben
-                                       Acht Neun Zehn Elf Zw–lf/],
-                  format  => "Der gro\xDFe Zeiger ist auf der %s " .
+    'de'      => {numbers => [qw /Eins Zwei Drei Vier FÃ¼nf Sechs Sieben
+                                       Acht Neun Zehn Elf ZwÃ¶lf/],
+                  format  => "Der groÃŸe Zeiger ist auf der %s " .
                              "und der kleine Zeiger ist auf der %s",
-                  big     => [qw/groß lang groß Minute/],
-                  little     => [qw/wenig klein Kurzschluß Stunde/]},
+                  big     => [qw/groÃŸ lang groÃŸ Minute/],
+                  little     => [qw/wenig klein KurzschluÃŸ Stunde/]},
 
     'du'      => {numbers => [qw /een twee drie vier vijf zes zeven
                                       acht negen tien elf twaalf/],
@@ -34,18 +36,18 @@ my %languages = (
 
     'es'      => {numbers => [qw /uno dos tres cuatro cinco seis siete
                                       ocho nueve diez once doce/],
-                  format  => "La manecilla grande est· sobre el %s " .
-                             "y la manecilla pequeÒa est· sobre el %s",
+                  format  => "La manecilla grande estÃ¡ sobre el %s " .
+                             "y la manecilla pequeÃ±a estÃ¡ sobre el %s",
                   big     => [qw/grande grande minuto/, 'de largo'],
-                  little     => [qw/poco pequeño cortocircuito hora/]},
+                  little     => [qw/poco pequeÃ±o cortocircuito hora/]},
                              
 
     'fr'      => {numbers => [qw /un deux trois quatre cinq six sept
                                      huit neuf dix onze douze/],
                   format  => "La grande aiguille est sur le %s " .
                              "et la petite aiguille est sur le %s",
-                  big     => [qw/grand longtemps grand minute/],
-                  little     => [qw/peu petit short heure/]},
+                  big     => [qw/grand long grand minute/],
+                  little     => [qw/peu petit court heure/]},
 
     'it'      => {numbers => ['a una', 'e due', 'e tre', 'e quattro',
                                        'e cinque', 'e sei', 'e sette',
@@ -57,14 +59,14 @@ my %languages = (
                   little     => [qw/piccolo piccolo short ora/]},
 
     'no'      => {numbers => [qw /en to tre fire fem seks syv
-                                     Âtte ni ti elleve tolv/],
-                  format  => "Den store viseren er pÂ %s " .
-                             "og den lille viseren er pÂ %s"},
+                                     Ã¥tte ni ti elleve tolv/],
+                  format  => "Den store viseren er pÃ¥ %s " .
+                             "og den lille viseren er pÃ¥ %s"},
 
-    'se'      => {numbers => [qw /ett tvÂ tre fyra fem sex sju
-                                      Âtta nio tio elva tolv/],
-                  format  => "Den stora visaren ”r pÂ %s " .
-                             "och den lilla visaren ”r pÂ %s"},
+    'se'      => {numbers => [qw /ett tvÃ‚ tre fyra fem sex sju
+                                      Ã‚tta nio tio elva tolv/],
+                  format  => "Den stora visaren Ã¤r pÃ¥ %s " .
+                             "och den lilla visaren Ã¤r pÃ¥ %s"},
 
     'swedish chef'
               => {numbers => [qw /one tvu three ffuoor ffeefe six
@@ -189,8 +191,7 @@ sub format_datetime {
     $minutes   = sprintf "%.0f" => $minutes / 5;
     $minutes ||= 12;
 
-    local $[ = 1;
-    return sprintf $self->{format} => @{$self->{numbers}} [$minutes, $hours];
+    return sprintf $self->{format} => @{$self->{numbers}} [$minutes -1, $hours -1];
 }
 
 sub format_duration {
@@ -253,6 +254,8 @@ This method returns the current language. (After processing as above)
 =item * languages()
 
 This method return a list of known languages.
+
+=back
 
 =head1 SUPPORT
 
