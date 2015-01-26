@@ -1,8 +1,15 @@
 # -*- encoding: utf-8 -*-
+#
+#     Perl DateTime extension for displaying a time in baby-style.
+#     Copyright (C) 2003, 2015 Rick Measham and Jean Forget
+#
+#     See the license in the embedded documentation below.
+#
 package DateTime::Format::Baby;
 
 use utf8;
 use strict;
+use warnings;
 use vars qw($VERSION);
 use DateTime;
 use Carp;
