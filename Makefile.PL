@@ -10,7 +10,7 @@ WriteMakefile(
                     'DateTime'         => 0.06,
                     'Carp'             => 0,
                     'Params::Validate' => 0,
-   }
+   },
     'LICENSE'		=> 'perl',
     'MIN_PERL_VERSION' => '5.6.1',
 );
