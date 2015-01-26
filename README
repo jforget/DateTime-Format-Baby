@@ -5,8 +5,8 @@ For more information, see the POD attached to the Baby.pm file.
 INSTALLATION:
 =============
 
-Use CPAN or CPANPLUS - there's no config in the process that requires you to
-do anything strange.
+Use CPAN, CPANPLUS or CPANMINUS - there's no config in the process that requires
+you to do anything strange.
 
 For those of you who like it the manual way, the recipe is the same as normal:
    perl Makefile.PL
