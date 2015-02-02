@@ -222,8 +222,8 @@ DateTime::Format::Baby - Parse and format baby-style time
 
   $Baby->language('fr');
 
-  # La grande aiguille est sur le douze et la petite aiguille est sur le six>
-  $Baby->format_datetime($dt);
+  print $Baby->format_datetime($dt);
+  # -> La grande aiguille est sur le douze et la petite aiguille est sur le six
 
 =head1 DESCRIPTION
 
@@ -235,12 +235,48 @@ This class offers the following methods.
 
 =over 4
 
+=item * new($language) or new(%hash)
+
+As usual, this class method returns an instance of the class.
+
+The method can receive either a single parameter specifying the language,
+or a hash with various parameters (note: not a hash reference, a real
+hash, in other words a list with an even number of elements). The hash may
+contain the following keys:
+
+=over 4
+
+=item * language
+
+Two-char code of a language (ISO 639-1) or special cases "Swedish chef" and "warez".
+
+=item * numbers
+
+Array reference containing the twelve numbers on the clockface. Number "1" is in position 0,
+number "2" is in position 1, until number "12" which is in position 11.
+
+=item * format
+
+The skeleton of the output baby-talk sentence, with C<%s> to mark where the values for the
+big hand and the little hand will be inserted.
+
+=item * big
+
+The various names for the big hand, in an array reference. The position within
+the array does not matter.
+
+=item * little
+
+Same thing for the little hand.
+
+=back
+
 =item * parse_datetime($string)
 
 Given baby talk, this method will return a new
 C<DateTime> object.
 
-For some languages (en de, es, fr and it) parsing uses a regexp on various synonyms
+For some languages (en, de, es, fr and it) parsing uses a regexp on various synonyms
 for 'big' and 'little'. For all other languages, the module only understands the same
 phrase that it would give using format_datetime().
 
