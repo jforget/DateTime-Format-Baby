@@ -144,38 +144,38 @@ sub language {
 sub parse_datetime {
     my ( $self, $date ) = @_;
 
-	my ($littlenum,$bignum);
+    my ($littlenum,$bignum);
 
-	if ($self->{big} && $self->{little}) {
-		my $numbers = '(' . join('|',@{$self->{numbers}}) . ')';
-		my $format = $self->{format};
-		my $big = '(' . join('|',@{$self->{big}}) . ')';
-		my $little = '(' . join('|',@{$self->{little}}) . ')';
+    if ($self->{big} && $self->{little}) {
+        my $format  = $self->{format};
+        my $numbers = '(' . join('|', @{$self->{numbers}}) . ')';
+        my $big     = '(' . join('|', @{$self->{big}})     . ')';
+        my $little  = '(' . join('|', @{$self->{little}})  . ')';
 
-		(undef,$littlenum) = $date =~/$little.*?$numbers/i;
-		(undef,$bignum) = $date =~/$big.*?$numbers/i;
+        (undef, $littlenum) = $date =~ /$little.*?$numbers/i;
+        (undef, $bignum   ) = $date =~ /$big.*?$numbers/i;
 
-	} else {
-		my $regex = $self->{format};
-		$regex =~s/\%s/(\\w+)/g;
-		
-		($bignum,$littlenum) = $date =~ /$regex/;
-	}
-		
-	unless ($bignum && $littlenum) {
-		croak "Sorry, I didn't understand '$date' in '".$self->language ."'";
-	}
+    } else {
+        my $regex = $self->{format};
+        $regex    =~s/\%s/(\\w+)/g;
+        
+        ($bignum,$littlenum) = $date =~ /$regex/;
+    }
+            
+    unless ($bignum && $littlenum) {
+        croak "Sorry, I didn't understand '$date' in '" . $self->language . "'";
+    }
 
-	my %reverse;
-	@reverse{@{$self->{numbers}}} = (1..12);
-	
-	my $hours = $reverse{lc($littlenum)} * 1;
-	my $minutes = $reverse{lc($bignum)} * 5;
-	
-	$hours-- if $minutes > 30;
-	if ($minutes == 60) {
-		$minutes = 0; $hours++;
-	}
+    my %reverse;
+    @reverse{map { lc } @{$self->{numbers}}} = (1..12);
+    
+    my $hours   = $reverse{lc($littlenum)} * 1;
+    my $minutes = $reverse{lc($bignum   )} * 5;
+    
+    $hours-- if $minutes > 30;
+    if ($minutes == 60) {
+        $minutes = 0; $hours++;
+    }
     return DateTime->new(year=>0, hour=>$hours, minute=>$minutes);
 }
 
