@@ -10,4 +10,5 @@ lib/DateTime/Format/Baby.pm
 t/00load.t
 t/01basic.t
 t/02advanced.t
+t/03custom.t
 

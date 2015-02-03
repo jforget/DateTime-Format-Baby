@@ -225,6 +225,23 @@ DateTime::Format::Baby - Parse and format baby-style time
   print $Baby->format_datetime($dt);
   # -> La grande aiguille est sur le douze et la petite aiguille est sur le six
 
+Extended example, with a fancy clockface (seen in L<Acme::Time::Asparagus>).
+
+  use DateTime::Format::Baby;
+  my $baby = DateTime::Format::Baby->new(language => 'en',
+                                         numbers  => [
+                 'Tomato',      'Eggplant',        'Carrot',     'Garlic',
+                 'Green Onion', 'Pumpkin',         'Asparagus',  'Onion',
+                 'Corn',        'Brussels Sprout', 'Red Pepper', 'Cabbage',
+                 ]
+              );
+  my $dt = DateTime->new(year => 1964, month  => 10, day    => 16,
+                         hour =>   17, minute => 36, second =>  0
+           );
+
+  print $baby->format_datetime($dt);
+  # -> The big hand is on the Asparagus and the little hand is on the Pumpkin
+
 =head1 DESCRIPTION
 
 This module understands baby talk in a variety of languages.
@@ -303,7 +320,7 @@ This method return a list of known languages.
 =head1 SUPPORT
 
 Support for this module is provided via the datetime@perl.org email
-list.  See http://lists.perl.org/ for more details.
+list.  See L<http://lists.perl.org/> for more details.
 
 =head1 NOTE
 
@@ -314,13 +331,13 @@ more for amusement than anything else.
 
 Rick Measham <rickm@cpan.org> (BigLug on PerlMonks)
 
-This code is a DateTime version of Acme::Time::Baby (copyright 2002 by Abigail)
+This code is a DateTime version of L<Acme::Time::Baby> (copyright 2002 by Abigail)
 with the ability to parse strings added by Rick Measham.
 
 =head1 CONTRIBUTIONS
 
 Abigail's original module contained a language list that is plagarised here. 
-See the documentation for Acme::Time::Baby for language acknowledgements.
+See the documentation for L<Acme::Time::Baby> for language acknowledgements.
 
 If you have additional language data for this module, please also pass it on to
 Abigail. This module is not meant to replace the original. Rather it is a DateTime
@@ -340,10 +357,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 =head1 SEE ALSO
 
-Acme::Time::Baby
+L<Acme::Time::Baby>
+
+L<Acme::Time::Asparagus>
 
 datetime@perl.org mailing list
 
-http://datetime.perl.org/
+L<http://datetime.perl.org/>
 
 =cut
