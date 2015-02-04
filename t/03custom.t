@@ -31,26 +31,44 @@ use strict;
 use Test::More;
 use DateTime::Format::Baby;
 
-my @data = ( [ 16, 29, 28, 'The big hand is on the Pumpkin and the little hand is on the Garlic',        'a bit before thirty', '04:30:00' ],
-             [ 16, 32, 28, 'The big hand is on the Pumpkin and the little hand is on the Green Onion',   'a bit past thirty',   '05:30:00' ],
-             [ 16, 34, 28, 'The big hand is on the Asparagus and the little hand is on the Green Onion', 'past thirty',         '04:35:00' ],
-             [ 16, 58, 28, 'The big hand is on the Cabbage and the little hand is on the Green Onion',   'before the hour',     '05:00:00' ],
-             [ 17, 02, 28, 'The big hand is on the Cabbage and the little hand is on the Green Onion',   'just after the hour', '05:00:00' ],
-             [ 23, 58, 28, 'The big hand is on the Cabbage and the little hand is on the Cabbage',  	 'around midnight',     '12:00:00' ],
-             [ 00, 02, 28, 'The big hand is on the Cabbage and the little hand is on the Cabbage',  	 'around midnight',     '12:00:00' ],
-           );
+my @data1 = ( [ 16, 29, 28, 'The big hand is on the Pumpkin and the little hand is on the Garlic',        'a bit before thirty', '04:30:00' ],
+              [ 16, 32, 28, 'The big hand is on the Pumpkin and the little hand is on the Green Onion',   'a bit past thirty',   '05:30:00' ],
+              [ 16, 34, 28, 'The big hand is on the Asparagus and the little hand is on the Green Onion', 'past thirty',         '04:35:00' ],
+              [ 16, 58, 28, 'The big hand is on the Cabbage and the little hand is on the Green Onion',   'before the hour',     '05:00:00' ],
+              [ 17, 02, 28, 'The big hand is on the Cabbage and the little hand is on the Green Onion',   'just after the hour', '05:00:00' ],
+              [ 23, 58, 28, 'The big hand is on the Cabbage and the little hand is on the Cabbage',       'around midnight',     '12:00:00' ],
+              [ 00, 02, 28, 'The big hand is on the Cabbage and the little hand is on the Cabbage',       'around midnight',     '12:00:00' ],
+            );
 
-my $baby = DateTime::Format::Baby->new(language => 'en',
-                                       numbers  => [
-        'Tomato',      'Eggplant',       'Carrot',     'Garlic',
-        'Green Onion', 'Pumpkin',        'Asparagus',  'Onion',
-        'Corn',        'Brussels Sprout', 'Red Pepper', 'Cabbage',
-        ]
+my @data2 = ( [ 16, 29, 28, 'The fork is on the Pumpkin and the spoon is on the Garlic',        'a bit before thirty', '04:30:00' ],
+              [ 16, 32, 28, 'The fork is on the Pumpkin and the spoon is on the Green Onion',   'a bit past thirty',   '05:30:00' ],
+              [ 16, 34, 28, 'The fork is on the Asparagus and the spoon is on the Green Onion', 'past thirty',         '04:35:00' ],
+              [ 16, 58, 28, 'The fork is on the Cabbage and the spoon is on the Green Onion',   'before the hour',     '05:00:00' ],
+              [ 17, 02, 28, 'The fork is on the Cabbage and the spoon is on the Green Onion',   'just after the hour', '05:00:00' ],
+              [ 23, 58, 28, 'The fork is on the Cabbage and the spoon is on the Cabbage',       'around midnight',     '12:00:00' ],
+              [ 00, 02, 28, 'The fork is on the Cabbage and the spoon is on the Cabbage',       'around midnight',     '12:00:00' ],
+            );
+
+plan(tests => 2 * (@data1 + @data2));
+
+# See Rich Bowen's http://drbacchus.com/images/clock.jpg
+my $baby1 = DateTime::Format::Baby->new(language => 'en',
+                                        numbers  => [ 'Tomato',      'Eggplant',        'Carrot',     'Garlic',
+                                                      'Green Onion', 'Pumpkin',         'Asparagus',  'Onion',
+                                                      'Corn',        'Brussels Sprout', 'Red Pepper', 'Cabbage',
+                                                      ]
+);
+my $baby2 = DateTime::Format::Baby->new(language => 'en',
+                                     ,  numbers  => [ 'Tomato',      'Eggplant',        'Carrot',     'Garlic',
+                                                      'Green Onion', 'Pumpkin',         'Asparagus',  'Onion',
+                                                      'Corn',        'Brussels Sprout', 'Red Pepper', 'Cabbage',
+                                                    ]
+                                     ,  big      => [ 'fork' ]
+                                     ,  little   => [ 'spoon' ]
+                                     ,  format   => "The fork is on the %s and the spoon is on the %s"
 );
 
-plan(tests => 2 * @data);
-
-foreach my $data (@data) {
+foreach my $data (@data1) {
   my ($hh, $mm, $ss, $expect1, $comment, $expect2) = @$data;
 
   my $dt = DateTime->new(
@@ -62,9 +80,28 @@ foreach my $data (@data) {
         second => $ss
       );
 
-  my $result = $baby->format_datetime($dt);
+  my $result = $baby1->format_datetime($dt);
   is( $result, $expect1, 'format:  ' . $comment);
 
-  my $dt2 = $baby->parse_datetime($result);
+  my $dt2 = $baby1->parse_datetime($result);
+  is ($dt2->hms, $expect2, 'parsing: ' . $comment);
+}
+
+foreach my $data (@data2) {
+  my ($hh, $mm, $ss, $expect1, $comment, $expect2) = @$data;
+
+  my $dt = DateTime->new(
+        year   => 1964,
+        month  => 10,
+        day    => 16,
+        hour   => $hh,
+        minute => $mm,
+        second => $ss
+      );
+
+  my $result = $baby2->format_datetime($dt);
+  is( $result, $expect1, 'format:  ' . $comment);
+
+  my $dt2 = $baby2->parse_datetime($result);
   is ($dt2->hms, $expect2, 'parsing: ' . $comment);
 }
