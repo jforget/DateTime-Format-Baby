@@ -100,15 +100,16 @@ sub new {
 		%args = @_;
 	}
 	$args{language}	||= 'en';
+        unless (exists $languages{$args{language}}) {
+                croak "I do not know the language '$args{language}'. The languages I do know are: "
+                      . join(', ', $class->languages);
+        }
+
+        $args{numbers}  ||= $languages{$args{language}}{numbers};
+        $args{format}   ||= $languages{$args{language}}{format};
+        $args{big}      ||= $languages{$args{language}}{big};
+        $args{little}   ||= $languages{$args{language}}{little};
 	
-	$args{numbers}	||= $languages{$args{language}}{numbers};
-	$args{format}	||= $languages{$args{language}}{format};
-	$args{big}		||= $languages{$args{language}}{big};
-	$args{little}	||= $languages{$args{language}}{little};
-	
-	unless (exists $languages{$args{language}}) {
-		croak "I do not know the language '$args{language}'. The languages I do know are: " . join(', ', sort keys %languages);
-	}
 	unless ($args{numbers}) {
 		croak "I have no numbers for that language.";
 	}
@@ -128,17 +129,18 @@ sub language {
 	my $language = shift;
 	
 	if ($language) {
-		$self->{language}   = $language;
-		$self->{numbers}	= $languages{$language}{numbers};
-		$self->{format}		= $languages{$language}{format};
-		$self->{big}		= $languages{$language}{big};
-		$self->{little}		= $languages{$language}{little};
-		
-		unless (exists $languages{$language}) {
-			croak "I do not know the language '$language'. The languages I do know are: " . join(', ', sort keys %languages);
-		}
+                unless (exists $languages{$language}) {
+                        croak "I do not know the language '$language'. The languages I do know are: "
+                              . join(', ', $self->languages);
+                }
+
+                $self->{language}   = $language;
+                $self->{numbers}    = $languages{$language}{numbers};
+                $self->{format}     = $languages{$language}{format};
+                $self->{big}        = $languages{$language}{big};
+                $self->{little}     = $languages{$language}{little};
 	}
-	return $self->{language};	
+	return $self->{language};
 }
 
 sub parse_datetime {
