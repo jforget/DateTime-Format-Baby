@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Perl DateTime extension for displaying a time in baby-style.
 #     Copyright (C) 2003, 2015 Rick Measham and Jean Forget
@@ -324,10 +324,34 @@ This method return a list of known languages.
 Support for this module is provided via the datetime@perl.org email
 list.  See L<http://lists.perl.org/> for more details.
 
-=head1 NOTE
+=head1 KNOWN ISSUES AND BUGS
 
-Baby talk does not implement years, months, days or even AM/PM. It's
-more for amusement than anything else.
+No known bug, only known issues.
+
+As Abigail said in his module L<Acme::Time::Baby>, the "Baby" part of the module name
+is a misnomer, because you have to be at least a toddler to read a clockface and
+describe it in a complete sentence with a correct syntax (even if a simple one). On the
+other hand, the common phrase is not "toddler talk", but "baby talk". Therefore
+L<Acme::Time::Baby> keeps its name L<Acme::Time::Baby> and L<DateTime::Format::Baby>
+keeps its name L<DateTime::Format::Baby>.
+
+Baby talk does not implement years, months, days or even AM/PM. It's more for amusement
+than anything else.
+
+You may think that a roundtrip like this:
+
+  my $string       = $baby->format_datetime($datetime);
+  my $new_datetime = $baby->parse_datetime($string);
+
+should give the same value with a 5-minute fuzz factor.  This is not the case for two
+reasons. As stated above, babies (or toddlers) do not understand the AM/PM factor. So
+there can be a 12-hour skip in the roundtrip. The second reason is that when the time
+is a few minutes past the half-hour (say xx:31 or xx:32), the small hand is not on the
+same number as when the time is exactly on the half-hour. So there is a 1-hour jump
+forward during such a round-trip.
+
+As already said above, baby talk does not include convoluted sentences as: "The big and
+little hands are on the six and five, respectively" or "Both hands are on the five".
 
 =head1 AUTHOR
 
@@ -351,11 +375,22 @@ This program is copyright 2003 by Rick Measham
 
 This program is based on code that is copyright 2002 by Abigail. 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the following
+conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. 
+The above copyright notice and this permission notice shall be included in all copies
+or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 =head1 SEE ALSO
 
