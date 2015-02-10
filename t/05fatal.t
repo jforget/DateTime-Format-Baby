@@ -35,7 +35,7 @@ use DateTime::Format::Baby;
 
 BEGIN {
   eval "use Test::Fatal qw(dies_ok)";
-  plan skip_all => "Test::Exception needed"
+  plan skip_all => "Test::Fatal needed"
     if $@;
 }
 

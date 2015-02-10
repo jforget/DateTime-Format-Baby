@@ -1,6 +1,6 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
-#     t/04fail.t - checking the error messages
+#     t/04exception.t - checking the error messages (using Test::Exception)
 #     Test script for DateTime::Format::Baby
 #     Copyright (C) 2015, Rick Measham and Jean Forget
 #
