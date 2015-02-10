@@ -11,5 +11,6 @@ t/00load.t
 t/01basic.t
 t/02advanced.t
 t/03custom.t
-t/04fail.t
+t/04exception.t
+t/05fatal.t
 

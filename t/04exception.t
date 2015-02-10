@@ -31,9 +31,13 @@
 use strict;
 use warnings;
 use Test::More;
-use Test::Exception;
-use DateTime::Duration;
 use DateTime::Format::Baby;
+
+BEGIN {
+  eval "use Test::Exception";
+  plan skip_all => "Test::Exception needed"
+    if $@;
+}
 
 plan(tests => 7);
 dies_ok { my $baby = DateTime::Format::Baby->new('en', format => '??') } "new fails when called with odd number of parameters";
@@ -44,5 +48,10 @@ dies_ok { $baby->language('el') } "that's all Greek for me";
 dies_ok { $baby->parse_datetime('glglglglglgl') } "Bubbling baby";
 dies_ok { $baby->parse_datetime('The big hand is on the Six') } "Partial result";
 dies_ok { $baby->parse_duration('When will we arrive Mummy?') } "No duration";
-my $dur = DateTime::Duration->new(hours => 1, minutes => 30);
-dies_ok { $baby->format_duration($dur) } "No duration";
+
+SKIP: {
+  eval "use DateTime::Duration";
+  skip if $@;
+  my $dur = DateTime::Duration->new(hours => 1, minutes => 30);
+  dies_ok { $baby->format_duration($dur) } "No duration";
+}
