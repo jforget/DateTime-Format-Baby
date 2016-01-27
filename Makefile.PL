@@ -60,7 +60,7 @@ WriteMakefile(
        provides       => {
            'DateTime::Format::Baby' => {
                 file => 'lib/DateTime/Format/Baby.pm',
-                version => '1.0200',
+                version => '1.0300',
            },
        },
        'meta-spec' => { version => 2 },
