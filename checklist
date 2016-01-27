@@ -1,0 +1,34 @@
+-*- encoding: utf-8; indent-tabs-mode: nil -*-
+
+See Merijn's checklist:
+https://github.com/Tux/Release-Checklist/blob/master/Checklist.md
+
+Check version number in:
+-- Changes
+-- Makefile.PL
+-- lib/DateTime/Format/Baby.pm
+
+Check copyright years in:
+-- Makefile.PL
+-- lib/DateTime/Format/Baby.pm
+-- t/*.t
+
+Check release date in:
+-- Changes
+
+Kwalitee
+
+MANIFEST: among others, check that all new test files are mentionned
+
+Test with all perlbrew versions
+
+Coverage: preferably with perlbrew perl-lgdbl (or later?)
+
+Build META.{json,yml} and .tar.gz with perlbrew perl-lgdbl (or other? perl-5.20.2?)
+
+Check contents of META.{json,yml}:
+  version number (2x)
+  minimum perl version
+  provides (with version number)
+  repository
+  
