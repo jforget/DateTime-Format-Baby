@@ -54,7 +54,7 @@ Note on version conventions:
 	  returning 7:60 rather then 8:00, which used to work but doesn't
 	  anymore!)   
 
-1.0200 ???
+1.0200 Wed 2016-01-27
         - Prevent warnings about assignments to $[
         - POD fix
         - convert to utf-8
