@@ -208,7 +208,11 @@ sub format_duration {
 }
 
 
-1;
+# Ending a module with whatever, which risks to be zero, is wrong.
+# Ending a module with 1 is boring. So, let us end it with:
+1985;
+# Hint: directed by CS, with RG, MB and AD
+# Or 1987, directed by LN, with TS, SG and TD
 __END__
 
 =head1 NAME
@@ -356,6 +360,8 @@ little hands are on the six and five, respectively" or "Both hands are on the fi
 =head1 AUTHOR
 
 Rick Measham <rickm@cpan.org> (BigLug on PerlMonks)
+
+Co-maintainer: Jean Forget (JFORGET at cpan dot org)
 
 This code is a DateTime version of L<Acme::Time::Baby> (copyright 2002 by Abigail)
 with the ability to parse strings added by Rick Measham.
