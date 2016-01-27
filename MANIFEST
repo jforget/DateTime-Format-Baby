@@ -13,4 +13,4 @@ t/02advanced.t
 t/03custom.t
 t/04exception.t
 t/05fatal.t
-
+t/06utf8.t
