@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Perl DateTime extension for displaying a time in baby-style.
-#     Copyright (C) 2003, 2015 Rick Measham and Jean Forget
+#     Copyright (C) 2003, 2015, 2016 Rick Measham and Jean Forget
 #
 #     See the license in the embedded documentation below.
 #
@@ -371,7 +371,7 @@ port of that module.
 
 =head1 COPYRIGHT
 
-This program is copyright 2003 by Rick Measham
+This program is copyright 2003, 2015, 2016 by Rick Measham and Jean Forget
 
 This program is based on code that is copyright 2002 by Abigail. 
 

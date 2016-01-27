@@ -1,6 +1,6 @@
 #     t/03custom.t - checking the customization of the language
 #     Test script for DateTime::Format::Baby
-#     Copyright (C) 2015, Rick Measham and Jean Forget
+#     Copyright (C) 2015, 2016, Rick Measham and Jean Forget
 #     with some code taken from Acme::Time::Baby
 #
 #     This program is distributed under the same terms as Perl:
