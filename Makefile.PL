@@ -1,6 +1,6 @@
 #
 #     Configuration script for DateTime::Format::Baby
-#     Copyright (C) 2003, 2016 Rick Measham and Jean Forget
+#     Copyright (C) 2003, 2016, 2021 Rick Measham and Jean Forget
 #
 #     This program is distributed under the same terms as Perl 5.16.3:
 #     GNU Public License version 1 or later and Perl Artistic License
@@ -69,6 +69,9 @@ WriteMakefile(
                type => 'git',
                url  => 'https://github.com/jforget/DateTime-Format-Baby.git',
                web  => 'https://github.com/jforget/DateTime-Format-Baby',
+           },
+           bugtracker => {
+               web  => 'https://github.com/jforget/DateTime-Format-Baby/issues',
            },
        },
     },

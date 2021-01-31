@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Perl DateTime extension for displaying a time in baby-style.
-#     Copyright (C) 2003, 2015, 2016 Rick Measham and Jean Forget
+#     Copyright (C) 2003, 2015, 2016, 2021 Rick Measham and Jean Forget
 #
 #     See the license in the embedded documentation below.
 #
@@ -357,6 +357,30 @@ forward during such a round-trip.
 As already said above, baby talk does not include convoluted sentences as: "The big and
 little hands are on the six and five, respectively" or "Both hands are on the five".
 
+=head1 REPORTING BUGS AND CONTRIBUTING
+
+Please   report  any   bugs   or  feature   requests   to  Github   at
+C<https://github.com/jforget/DateTime-Format-Baby>,   and  create   an
+issue or submit a pull request.
+
+If you have no  feedback after a week or so, try to  reach me by email
+at JFORGET  at cpan  dot org.  The notification  from Github  may have
+failed to reach  me. In your message, please  mention the distribution
+name in the subject, so my spam  filter and I will easily dispatch the
+email to the proper folder.
+
+On the other  hand, I may be  on vacation or away from  Internet for a
+good  reason. Do  not be  upset if  I do  not answer  immediately. You
+should write  me at a leasurely  rythm, about once per  month, until I
+react.
+
+If after about six  months or a year, there is  still no reaction from
+me, you can worry and start the CPAN procedure for module adoption.
+See L<https://groups.google.com/g/perl.module-authors/c/IPWjASwuLNs>
+L<https://www.cpan.org/misc/cpan-faq.html#How_maintain_module>
+and L<https://www.cpan.org/misc/cpan-faq.html#How_adopt_module>.
+
+
 =head1 AUTHOR
 
 Rick Measham <rickm@cpan.org> (BigLug on PerlMonks)
@@ -377,7 +401,7 @@ port of that module.
 
 =head1 COPYRIGHT
 
-This program is copyright 2003, 2015, 2016 by Rick Measham and Jean Forget
+This program is copyright 2003, 2015, 2016, 2021 by Rick Measham and Jean Forget
 
 This program is based on code that is copyright 2002 by Abigail. 
 

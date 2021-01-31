@@ -2,7 +2,7 @@
 #
 #     t/04exception.t - checking the error messages (using Test::Exception)
 #     Test script for DateTime::Format::Baby
-#     Copyright (C) 2015, 2016, Rick Measham and Jean Forget
+#     Copyright (C) 2015, 2016, 2021 Rick Measham and Jean Forget
 #
 #     This program is distributed under the same terms as Perl 5.16.3:
 #     GNU Public License version 1 or later and Perl Artistic License

@@ -1,6 +1,6 @@
 #     t/05utf8.t - checking the UTF-8 strings
 #     Test script for DateTime::Format::Baby
-#     Copyright (C) 2015, 2016, Rick Measham and Jean Forget
+#     Copyright (C) 2015, 2016, 2021 Rick Measham and Jean Forget
 #     with some code taken from Acme::Time::Baby
 #
 #     This program is distributed under the same terms as Perl:
